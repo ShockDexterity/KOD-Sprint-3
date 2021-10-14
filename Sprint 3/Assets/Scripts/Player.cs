@@ -113,19 +113,20 @@ public class Player : MonoBehaviour
         }//end if
     }//end OnCollisionEnter2D()
 
-    public void TakeDamage(int damage)
+    // Player can take damage and die
+    public void TakeDamage(int outsideDamage)
     {
         // Only take damage when not blocking
         if (!blocking)
         {
-            health -= damage;
+            health -= outsideDamage;
             Debug.Log("Player health is now " + health);
-        }
+        }//end if
 
         //FIXME: RESPAWN INSTEAD OF DESTROYING
         if (health < 1)
         {
             Destroy(this.gameObject);
-        }
-    }
-}
+        }//end if
+    }//end TakeDamage()
+}//end Player
