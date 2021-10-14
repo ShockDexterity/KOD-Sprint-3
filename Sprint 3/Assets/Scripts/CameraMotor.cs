@@ -21,6 +21,6 @@ public class CameraMotor : MonoBehaviour
         float deltaX = lookAt.position.x - transform.position.x;
         float deltaY = lookAt.position.y - transform.position.y;
 
-        transform.position += new Vector3(deltaX, deltaY, 0);
+        transform.position += new Vector3(deltaX, deltaY + 1f, 0);
     }
 }

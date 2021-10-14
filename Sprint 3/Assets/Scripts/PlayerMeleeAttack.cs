@@ -9,12 +9,14 @@ public class PlayerMeleeAttack : MonoBehaviour
     private float nextAttack;           // Time of next attack
     private int damage = 2;             // Melee attack damage
     public Transform attackPoint;       // Where the attack range is centered
-    public float attackRange = 0.5f;    // Range of the attack
+    public float attackRange;           // Range of the attack
     public LayerMask enemyLayers;       // What layer(s) the enemies are on
 
     // Start is called before the first frame update
     private void Start()
     {
+        attackRange = 0.5f;
+        damage = 2;
         animator = GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>();
     }//end Start()
 
@@ -41,19 +43,23 @@ public class PlayerMeleeAttack : MonoBehaviour
         // Checking who we hit
         foreach (Collider2D enemy in hitEnemies)
         {
-            //FIXME: UNCOMMENT THIS WHEN MAGE AND KNIGHT ARE IMPLEMENTED
-            //Mage mage = enemy.GetComponent<Mage>();
-            //Knight knight = enemy.GetComponent<Knight>();
+            Mage mage = enemy.GetComponent<Mage>();
+            Knight knight = enemy.GetComponent<Knight>();
+            Spearmen spearmen = enemy.GetComponent<Spearmen>();
 
-            //if (mage != null)
-            //{
-            //    mage.TakeDamage(damage);
-            //}
-            //else if (knight != null)
-            //{
-            //    knight.TakeDamage(damage);
-            //}
-        }// foreach
+            if (mage != null)
+            {
+                mage.TakeDamage(damage);
+            }
+            else if (knight != null)
+            {
+                knight.TakeDamage(damage);
+            }
+            else if (spearmen != null)
+            {
+                spearmen.TakeDamage(damage);
+            }
+        }//end foreach
     }//end Attack()
 
     // Allows the range to be seen

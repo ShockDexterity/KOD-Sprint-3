@@ -241,13 +241,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb045826e3a905641aa4f0a33881b5d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 0}
+  animator: {fileID: 2582932899072318687}
   attackRate: 0.6
   attackPoint: {fileID: 2582932897562660532}
   attackRange: 0.5
   enemyLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1024
 --- !u!114 &2582932899072318683
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -260,8 +260,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2802dd0d6329f046bd2ca2760b270cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sr: {fileID: 0}
-  animator: {fileID: 0}
+  sr: {fileID: 2582932899296221835}
+  animator: {fileID: 2582932899072318687}
   attackRate: 0
   attackPoint: {fileID: 2582932898208142425}
   attackRange: 0.5

@@ -24,13 +24,14 @@ public class Player : MonoBehaviour
 
         // Setting default values
         speed = 2.5f;
-        jumpForce = 5f;
+        jumpForce = 6f;
         jumping = false;
         idle = true;
         health = maxHealth;
 
         // The player is able to pass through what the enemies can't
         Physics2D.IgnoreLayerCollision(11, 12);
+        //Physics2D.IgnoreLayerCollision(11, 10);
     }// end Start()
 
     // Update is called once per frame
@@ -120,7 +121,6 @@ public class Player : MonoBehaviour
         if (!blocking)
         {
             health -= outsideDamage;
-            Debug.Log("Player health is now " + health);
         }//end if
 
         //FIXME: RESPAWN INSTEAD OF DESTROYING

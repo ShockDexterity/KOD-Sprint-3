@@ -17,6 +17,7 @@ public class MageProjectile : MonoBehaviour
     void Start()
     {
         initialPos = transform.position;
+        this.damage = 1;
     }
 
     // Update is called once per frame
@@ -52,6 +53,8 @@ public class MageProjectile : MonoBehaviour
             case "Mage": break;
 
             case "Knight": break;
+
+            case "Spearmen": break;
 
             case "Player":
                 GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().TakeDamage(damage);

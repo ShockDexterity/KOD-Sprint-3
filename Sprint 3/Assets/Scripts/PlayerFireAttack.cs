@@ -66,19 +66,23 @@ public class PlayerFireAttack : MonoBehaviour
         // Checking who we hit
         foreach (Collider2D enemy in hitEnemies)
         {
-            //FIXME: UNCOMMENT THIS WHEN MAGE AND KNIGHT ARE IMPLEMENTED
-            //Mage mage = enemy.GetComponent<Mage>();
-            //Knight knight = enemy.GetComponent<Knight>();
+            Mage mage = enemy.GetComponent<Mage>();
+            Knight knight = enemy.GetComponent<Knight>();
+            Spearmen spearmen = enemy.GetComponent<Spearmen>();
 
-            //if (mage != null)
-            //{
-            //    mage.TakeDamage(damage);
-            //}
-            //else if (knight != null)
-            //{
-            //    knight.TakeDamage(damage);
-            //}
-        }// foreach
+            if (mage != null)
+            {
+                mage.TakeDamage(damage);
+            }
+            else if (knight != null)
+            {
+                knight.TakeDamage(damage);
+            }
+            else if (spearmen != null)
+            {
+                spearmen.TakeDamage(damage);
+            }
+        }//end foreach
     }//end Attack
 
     // Allows the range to be seen

@@ -4,30 +4,32 @@ using UnityEngine;
 
 public class Mage : MonoBehaviour
 {
-    public GameObject player;               // the player
-    private float playerX;                  // player x coord
-    private float mageX;                    // mage x coord
-    private float playerY;                  // player x coord
-    private float mageY;                    // mage x coord
+    public GameObject player;               // The player
+    private float playerX;                  // Player x coord
+    private float mageX;                    // Mage x coord
+    private float playerY;                  // Player x coord
+    private float mageY;                    // Mage x coord
 
-    private Rigidbody2D physics;            // holds the mage's rigidbody for movement
-    public bool facingLeft = true;          // is the mage facing left? based on initial spritesheet
-    public int health = 4;                  // health of the mage
+    private Rigidbody2D physics;            // Holds the mage's rigidbody for movement
+    public bool facingLeft = true;          // Is the mage facing left? based on initial spritesheet
+    public int health = 4;                  // Health of the mage
 
-    public GameObject attackPrefab;         // holds the prefab for the mage's attack
-    public float attackRate;                // time between attacks
-    private float nextAttack;               // time of next attack
+    public GameObject attackPrefab;         // Holds the prefab for the mage's attack
+    public float attackRate;                // Time between attacks
+    private float nextAttack;               // Time of next attack
 
-    private Vector2 speed;                  // how fast the mage can go
-    private float moveRate = 1f;            // how long the mage will move
-    private float moveCounter = 0f;         // how long the mage has moved
-    public int dirX;                        // direction of movement
-    public bool seesPlayer = false;         // did the mage see the player?
+    private Vector2 speed;                  // How fast the mage can go
+    private float moveRate = 1f;            // How long the mage will move
+    private float moveCounter = 0f;         // How long the mage has moved
+    public int dirX;                        // Direction of movement
+    public bool seesPlayer = false;         // Did the mage see the player?
 
     // Animation booleans
-    public Animator anim;
+    public Animator anim;                   // Mage animation control
     public bool idle;
     public bool attacking;
+
+    // ALMOST IDENTICAL TO KNIGHT.CS, CHECK THERE FOR COMMENTS
 
     // Start is called before the first frame update
     void Start()
@@ -159,7 +161,6 @@ public class Mage : MonoBehaviour
                 if (playerX - mageX <= 5f)
                 {
                     seesPlayer = true;
-                    Debug.Log("I SAW THE PLAYER");
                     return;
                 }
             }
@@ -168,7 +169,6 @@ public class Mage : MonoBehaviour
                 if (Mathf.Abs(playerX - mageX) <= 5f)
                 {
                     seesPlayer = true;
-                    Debug.Log("I SAW THE PLAYER");
                     return;
                 }
             }
@@ -176,9 +176,11 @@ public class Mage : MonoBehaviour
     }
 
     // Allows the mage to take damage and die
-    public void TakeDamage(int damage)
+    public void TakeDamage(int outsideDamage)
     {
-        this.health -= damage;
+        Debug.Log("outsideDamage is " + outsideDamage);
+        this.health -= outsideDamage;
+        Debug.Log("Mage health is now " + health);
 
         if (this.health < 1)
         {
