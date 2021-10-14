@@ -36,14 +36,16 @@ public class PlayerFireAttack : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.F) && (Time.time > nextAttack))
         {
             nextAttack = Time.time + attackRate;
-            Attack();
             timeAttackStart = Time.time;
             attacking = true;
+            // Set fire attack animation
+            this.animator.SetTrigger("FireAttack");
         }
 
         // Make the flames visible
         if (attacking && Time.time > (timeAttackStart + 0.4f))
         {
+            Attack();
             this.sr.enabled = true;
         }
         // Hide the flames after the attack is finished
@@ -57,9 +59,6 @@ public class PlayerFireAttack : MonoBehaviour
     // Attack control
     void Attack()
     {
-        // Set fire attack animation
-        this.animator.SetTrigger("FireAttack");
-
         // Gathering all enemies we hit, if any
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
 
@@ -85,9 +84,9 @@ public class PlayerFireAttack : MonoBehaviour
         }//end foreach
     }//end Attack
 
-    // Allows the range to be seen
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
-    }//end OnDrawGizmosSelected()
+    //// Allows the range to be seen
+    //private void OnDrawGizmosSelected()
+    //{
+    //    Gizmos.DrawWireSphere(attackPoint.position, attackRange);
+    //}//end OnDrawGizmosSelected()
 }//end PlayerFireAttack
