@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Ground
+  - NoEnemy
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - Background
+  - TotalBarrier
+  - Decoration
+  - Enemies
+  - PlayerOnly
+  - EnemyBarrier
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 3187003549
+    locked: 0
+  - name: TotalBarrier
+    uniqueID: 1277799301
+    locked: 0
+  - name: Decoration
+    uniqueID: 1712635647
+    locked: 0
+  - name: EnemyBarrier
+    uniqueID: 3277432015
+    locked: 0
+  - name: Entities
+    uniqueID: 562794083
+    locked: 0
