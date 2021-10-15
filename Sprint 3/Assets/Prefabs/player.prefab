@@ -138,7 +138,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 562794083
   m_SortingLayer: 5
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: -1416604817420825889, guid: 9d801fb86bfc85844ab41445fee39e96, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -229,6 +229,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpForce: 0
+  blocking: 0
+  totalLoot: 0
+  coinCount: 0
+  gemCount: 0
 --- !u!114 &2582932899072318680
 MonoBehaviour:
   m_ObjectHideFlags: 0

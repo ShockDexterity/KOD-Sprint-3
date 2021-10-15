@@ -7,10 +7,6 @@ public class MageProjectile : MonoBehaviour
     public float moveSpeed = 0f;        // Movespeed of projectile
     public int damage;                  // Damage of projectile
 
-    private BoxCollider2D boxCollider;
-    private Vector3 moveDelta;
-    private RaycastHit2D hit;
-
     public Vector3 initialPos;
 
     // Start is called before the first frame update
@@ -26,17 +22,18 @@ public class MageProjectile : MonoBehaviour
         transform.Translate(-moveSpeed * Time.deltaTime, 0, 0);
         if (Mathf.Abs(transform.position.x) > 15 + Mathf.Abs(initialPos.x))
         {
+            // Went out of bounds
             Destroy(this.gameObject);
-            Debug.Log(this.gameObject.name + " went out of bounds");
         }
     }
 
+    // What direction the projectile will move in
     public void Direction(bool dir)
     {
         moveSpeed = (dir) ? 3f : -3f;
-        if(dir)
+        if (dir)
         {
-            this.transform.localScale = Vector3.one;
+            this.transform.localScale = new Vector3(1, 1, 1);
         }
         else
         {
@@ -48,21 +45,17 @@ public class MageProjectile : MonoBehaviour
     {
         switch (collision.gameObject.tag)
         {
-            case "NoEnemy": break;
+            // Do nothing
+            case "Enemy": break;
 
-            case "Mage": break;
-
-            case "Knight": break;
-
-            case "Spearmen": break;
-
+            // It hit the player and deals damage
             case "Player":
                 GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().TakeDamage(damage);
                 Destroy(this.gameObject);
                 break;
 
+            // It hit some other collider, so it can be destroyed
             default:
-                Debug.Log(collision.name);
                 Destroy(this.gameObject);
                 break;
         }

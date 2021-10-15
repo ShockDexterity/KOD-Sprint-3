@@ -9,6 +9,7 @@ TagManager:
   - Mage
   - Knight
   - Spearmen
+  - Enemy
   layers:
   - Default
   - TransparentFX

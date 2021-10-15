@@ -46,7 +46,7 @@ GameObject:
   - component: {fileID: 6028606310548033325}
   m_Layer: 10
   m_Name: knight
-  m_TagString: Knight
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -198,7 +198,7 @@ MonoBehaviour:
   player: {fileID: 0}
   facingLeft: 0
   attackRate: 0
-  attackPoint: {fileID: 0}
+  attackPoint: {fileID: 6028606310138644400}
   attackRange: 0
   playerLayer:
     serializedVersion: 2
@@ -207,3 +207,5 @@ MonoBehaviour:
   seesPlayer: 0
   animator: {fileID: 0}
   idle: 0
+  boxCollider2D: {fileID: 0}
+  lootSpawnPoint: {x: 0, y: 0, z: 0}

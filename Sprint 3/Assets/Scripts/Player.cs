@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -19,6 +20,13 @@ public class Player : MonoBehaviour
     private float timeJumped;       // When the player jumped
     private float jumpDelay;        // When the force will be applied
     private bool inJumpDelay;       // Are they waiting to jump?
+
+    private bool alive;             // Is the player currently alive? I sure hope so
+    private float timeOfDeath;      // When the player died
+
+    public int totalLoot;
+    public int coinCount;
+    public int gemCount;
 
     // Start is called before the first frame update
     void Start()
@@ -40,7 +48,6 @@ public class Player : MonoBehaviour
                 default: break;
             }
         }
-        Debug.Log(jumpDelay);
         // Setting default values
         speed = 2.5f;
         jumpForce = 6f;
@@ -49,6 +56,8 @@ public class Player : MonoBehaviour
         health = maxHealth;
         blocking = false;
         inJumpDelay = false;
+        alive = true;
+        timeOfDeath = 0;
 
         // The player is able to pass through what the enemies can't
         Physics2D.IgnoreLayerCollision(11, 12);
@@ -58,6 +67,12 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (timeOfDeath != 0 && Input.GetKeyDown(KeyCode.U) && Time.time > timeOfDeath + 10f)
+        {
+            Scene scene = SceneManager.GetActiveScene();
+            SceneManager.LoadScene(scene.name);
+        }
+
         // Checking for pitfall trap
         // FIXME: UPDATE THIS FOR A COLLISION TRIGGER RATHER THAN A POSITION CHECK
         if (this.transform.position.y < -5f)
@@ -65,72 +80,79 @@ public class Player : MonoBehaviour
             TakeDamage(1);
         }//end if
 
-        if (!blocking)
+        if (alive)
         {
-            // We don't want to double/triple/infinitely jump
-            if (!jumping)
+            if (!blocking)
             {
-                // Multiple control options
-                if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Space))
-                {
-                    timeJumped = Time.time;
-
-                    idle = false;
-                    jumping = true;
-                    inJumpDelay = true;
-                    animator.SetBool("isIdle", idle);
-                    animator.SetBool("isJumping", jumping);
-                }//end if
-            }//end if
-            if (inJumpDelay && Time.time > (timeJumped + jumpDelay))
-            {
-                // Player jumps on delay
-                physics.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
-                inJumpDelay = false;
-            }
-            // Player can move while in the air
-            if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
-            {
-                // Don't want to change out of the jump animation
+                // We don't want to double/triple/infinitely jump
                 if (!jumping)
                 {
-                    idle = false;
-                    animator.SetBool("isIdle", this.idle);
+                    // Multiple control options
+                    if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Space))
+                    {
+                        timeJumped = Time.time;
+
+                        idle = false;
+                        jumping = true;
+                        inJumpDelay = true;
+                        animator.SetBool("isIdle", idle);
+                        animator.SetBool("isJumping", jumping);
+                    }//end if
                 }//end if
-
-                // Change player direction
-                this.transform.localScale = new Vector3(1, 1, 1);
-
-                // Set new horizontal velocity while keeping vertical velocity
-                physics.velocity = new Vector2(speed, physics.velocity.y);
-            }//end if
-
-            else if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
-            {
-                // Don't want to change out of the jump animation
-                if (!jumping)
+                if (inJumpDelay && Time.time > (timeJumped + jumpDelay))
                 {
-                    idle = false;
-                    animator.SetBool("isIdle", this.idle);
-                }//end if
-
-                // Change player direction
-                this.transform.localScale = new Vector3(-1, 1, 1);
-
-                // Set new horizontal velocity while keeping vertical velocity
-                physics.velocity = new Vector2(-speed, physics.velocity.y);
-            }//end else if
-
-            else
-            {
-                // Don't want to change from jumping animation
-                if (!jumping)
+                    // Player jumps on delay
+                    physics.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
+                    inJumpDelay = false;
+                }
+                // Player can move while in the air
+                if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
                 {
-                    idle = true;
-                    animator.SetBool("isIdle", this.idle);
+                    // Don't want to change out of the jump animation
+                    if (!jumping)
+                    {
+                        idle = false;
+                        animator.SetBool("isIdle", this.idle);
+                    }//end if
+
+                    // Change player direction
+                    this.transform.localScale = new Vector3(1, 1, 1);
+
+                    // Set new horizontal velocity while keeping vertical velocity
+                    physics.velocity = new Vector2(speed, physics.velocity.y);
                 }//end if
-            }//end else
-        }//end if
+
+                else if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
+                {
+                    // Don't want to change out of the jump animation
+                    if (!jumping)
+                    {
+                        idle = false;
+                        animator.SetBool("isIdle", this.idle);
+                    }//end if
+
+                    // Change player direction
+                    this.transform.localScale = new Vector3(-1, 1, 1);
+
+                    // Set new horizontal velocity while keeping vertical velocity
+                    physics.velocity = new Vector2(-speed, physics.velocity.y);
+                }//end else if
+
+                else
+                {
+                    // Don't want to change from jumping animation
+                    if (!jumping)
+                    {
+                        idle = true;
+                        animator.SetBool("isIdle", this.idle);
+                    }//end if
+                }//end else
+            }//end if blocking
+        }//end if alive
+        else if (timeOfDeath != 0 && Time.time > timeOfDeath + 10f)
+        {
+            physics.velocity = Vector2.zero;
+        }
     }//end Update()
 
     public void IsBlocking(bool b)
@@ -164,7 +186,39 @@ public class Player : MonoBehaviour
         //FIXME: RESPAWN INSTEAD OF DESTROYING
         if (health < 1)
         {
-            Destroy(this.gameObject);
+            Die();
         }//end if
     }//end TakeDamage()
+
+    public void AcquireLoot(int value)
+    {
+        if (value == 1)
+        {
+            coinCount += 1;
+        }
+        else
+        {
+            gemCount += 1;
+        }
+        totalLoot = coinCount + (5 * gemCount);
+
+        Debug.Log("You acquired some loot! Your total loot is now: " + totalLoot);
+    }
+
+    private void Die()
+    {
+        timeOfDeath = Time.time;
+
+        // can't do anything anymore
+        alive = false;
+
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+
+        foreach (GameObject enemy in enemies)
+        {
+            Destroy(enemy);
+        }
+
+        animator.SetTrigger("Died");
+    }
 }//end Player
