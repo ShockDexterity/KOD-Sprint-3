@@ -16,12 +16,31 @@ public class Player : MonoBehaviour
     private bool idle;              // Is the player idle?
     public bool blocking;           // Is the player currently blocking?
 
+    private float timeJumped;       // When the player jumped
+    private float jumpDelay;        // When the force will be applied
+    private bool inJumpDelay;       // Are they waiting to jump?
+
     // Start is called before the first frame update
     void Start()
     {
         physics = this.GetComponent<Rigidbody2D>();
         animator = this.GetComponent<Animator>();
 
+        AnimationClip[] clips = animator.runtimeAnimatorController.animationClips;
+        foreach (AnimationClip clip in clips)
+        {
+            switch (clip.name)
+            {
+                // Time jump force with animation
+                case "playerJumpHold":
+                    // I don't know why it has to be multiplied by 10, otherwise it's too short
+                    jumpDelay = clip.length * 10f;
+                    break;
+
+                default: break;
+            }
+        }
+        Debug.Log(jumpDelay);
         // Setting default values
         speed = 2.5f;
         jumpForce = 6f;
@@ -29,6 +48,7 @@ public class Player : MonoBehaviour
         idle = true;
         health = maxHealth;
         blocking = false;
+        inJumpDelay = false;
 
         // The player is able to pass through what the enemies can't
         Physics2D.IgnoreLayerCollision(11, 12);
@@ -53,16 +73,21 @@ public class Player : MonoBehaviour
                 // Multiple control options
                 if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Space))
                 {
-                    // Player jumps
-                    physics.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
+                    timeJumped = Time.time;
 
                     idle = false;
                     jumping = true;
+                    inJumpDelay = true;
                     animator.SetBool("isIdle", idle);
                     animator.SetBool("isJumping", jumping);
                 }//end if
             }//end if
-
+            if (inJumpDelay && Time.time > (timeJumped + jumpDelay))
+            {
+                // Player jumps on delay
+                physics.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
+                inJumpDelay = false;
+            }
             // Player can move while in the air
             if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
             {
