@@ -14,7 +14,7 @@ public class Player : MonoBehaviour
 
     private Animator animator;      // Animator of the player
     private bool idle;              // Is the player idle?
-    private bool blocking;          // Is the player currently blocking?
+    public bool blocking;           // Is the player currently blocking?
 
     // Start is called before the first frame update
     void Start()
@@ -28,6 +28,7 @@ public class Player : MonoBehaviour
         jumping = false;
         idle = true;
         health = maxHealth;
+        blocking = false;
 
         // The player is able to pass through what the enemies can't
         Physics2D.IgnoreLayerCollision(11, 12);
@@ -44,65 +45,73 @@ public class Player : MonoBehaviour
             TakeDamage(1);
         }//end if
 
-        // We don't want to double/triple/infinitely jump
-        if (!jumping)
+        if (!blocking)
         {
-            // Multiple control options
-            if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Space))
+            // We don't want to double/triple/infinitely jump
+            if (!jumping)
             {
-                // Player jumps
-                physics.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
+                // Multiple control options
+                if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Space))
+                {
+                    // Player jumps
+                    physics.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
 
-                idle = false;
-                jumping = true;
-                animator.SetBool("isIdle", idle);
-                animator.SetBool("isJumping", jumping);
+                    idle = false;
+                    jumping = true;
+                    animator.SetBool("isIdle", idle);
+                    animator.SetBool("isJumping", jumping);
+                }//end if
             }//end if
+
+            // Player can move while in the air
+            if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
+            {
+                // Don't want to change out of the jump animation
+                if (!jumping)
+                {
+                    idle = false;
+                    animator.SetBool("isIdle", this.idle);
+                }//end if
+
+                // Change player direction
+                this.transform.localScale = new Vector3(1, 1, 1);
+
+                // Set new horizontal velocity while keeping vertical velocity
+                physics.velocity = new Vector2(speed, physics.velocity.y);
+            }//end if
+
+            else if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
+            {
+                // Don't want to change out of the jump animation
+                if (!jumping)
+                {
+                    idle = false;
+                    animator.SetBool("isIdle", this.idle);
+                }//end if
+
+                // Change player direction
+                this.transform.localScale = new Vector3(-1, 1, 1);
+
+                // Set new horizontal velocity while keeping vertical velocity
+                physics.velocity = new Vector2(-speed, physics.velocity.y);
+            }//end else if
+
+            else
+            {
+                // Don't want to change from jumping animation
+                if (!jumping)
+                {
+                    idle = true;
+                    animator.SetBool("isIdle", this.idle);
+                }//end if
+            }//end else
         }//end if
-
-        // Player can move while in the air
-        if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
-        {
-            // Don't want to change out of the jump animation
-            if (!jumping)
-            {
-                idle = false;
-                animator.SetBool("isIdle", this.idle);
-            }//end if
-
-            // Change player direction
-            this.transform.localScale = new Vector3(1, 1, 1);
-
-            // Set new horizontal velocity while keeping vertical velocity
-            physics.velocity = new Vector2(speed, physics.velocity.y);
-        }//end if
-
-        else if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
-        {
-            // Don't want to change out of the jump animation
-            if (!jumping)
-            {
-                idle = false;
-                animator.SetBool("isIdle", this.idle);
-            }//end if
-
-            // Change player direction
-            this.transform.localScale = new Vector3(-1, 1, 1);
-
-            // Set new horizontal velocity while keeping vertical velocity
-            physics.velocity = new Vector2(-speed, physics.velocity.y);
-        }//end else if
-
-        else
-        {
-            // Don't want to change from jumping animation
-            if (!jumping)
-            {
-                idle = true;
-                animator.SetBool("isIdle", this.idle);
-            }//end if
-        }//end else
     }//end Update()
+
+    public void IsBlocking(bool b)
+    {
+        blocking = b;
+    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -122,6 +131,10 @@ public class Player : MonoBehaviour
         {
             health -= outsideDamage;
         }//end if
+        else
+        {
+            Debug.Log("Damage blocked! Health is at " + health);
+        }
 
         //FIXME: RESPAWN INSTEAD OF DESTROYING
         if (health < 1)

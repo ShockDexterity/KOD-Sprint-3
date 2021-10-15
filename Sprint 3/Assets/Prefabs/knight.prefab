@@ -202,7 +202,7 @@ MonoBehaviour:
   attackRange: 0
   playerLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 2048
   dirX: 0
   seesPlayer: 0
   animator: {fileID: 0}
