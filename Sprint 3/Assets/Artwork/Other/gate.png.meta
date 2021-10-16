@@ -4,112 +4,112 @@ TextureImporter:
   internalIDToNameTable:
   - first:
       213: -5181238096649217694
-    second: gateOpening_28
+    second: gate_28
   - first:
       213: -7982836508489375379
-    second: gateOpening_29
+    second: gate_29
   - first:
       213: -7394372271534559977
-    second: gateOpening_30
+    second: gate_30
   - first:
       213: -1928443179949846260
-    second: gateOpening_31
+    second: gate_31
   - first:
       213: 386761480574464841
-    second: gateOpening_32
+    second: gate_32
   - first:
       213: 353983767091866989
-    second: gateOpening_33
+    second: gate_33
   - first:
       213: -8622335367972701596
-    second: gateOpening_34
+    second: gate_34
   - first:
       213: 424043637903160817
-    second: gateOpening_35
+    second: gate_35
   - first:
       213: 6582776820039932566
-    second: gateOpening_36
+    second: gate_36
   - first:
       213: 7039585008907808924
-    second: gateOpening_37
+    second: gate_37
   - first:
       213: 1486905361036781158
-    second: gateOpening_38
+    second: gate_38
   - first:
       213: -8802263442110157377
-    second: gateOpening_39
+    second: gate_39
   - first:
       213: 5280334003336517409
-    second: gateOpening_40
+    second: gate_40
   - first:
       213: -3307971759175228270
-    second: gateOpening_41
+    second: gate_41
   - first:
       213: 5270442055026944792
-    second: gateOpening_42
+    second: gate_42
   - first:
       213: 4088461672746599168
-    second: gateOpening_43
+    second: gate_43
   - first:
       213: 5230584844881810049
-    second: gateOpening_44
+    second: gate_44
   - first:
       213: 553472673631542214
-    second: gateOpening_45
+    second: gate_45
   - first:
       213: -6589797011186508081
-    second: gateOpening_46
+    second: gate_46
   - first:
       213: -3479866862558599146
-    second: gateOpening_47
+    second: gate_47
   - first:
       213: -1875281426595687892
-    second: gateOpening_48
+    second: gate_48
   - first:
       213: -8824151833606029615
-    second: gateOpening_49
+    second: gate_49
   - first:
       213: 5336504134394754449
-    second: gateOpening_50
+    second: gate_50
   - first:
       213: 9039913886560656631
-    second: gateOpening_51
+    second: gate_51
   - first:
       213: -7821873851476242472
-    second: gateOpening_52
+    second: gate_52
   - first:
       213: 5768902277270288628
-    second: gateOpening_53
+    second: gate_53
   - first:
       213: 3916053362801550343
-    second: gateOpening_54
+    second: gate_54
   - first:
       213: -2477180994556776713
-    second: gateOpening_55
+    second: gate_55
   - first:
       213: 6939033775450420886
-    second: gateOpening_56
+    second: gate_56
   - first:
       213: -3386513234140267812
-    second: gateOpening_57
+    second: gate_57
   - first:
       213: 7922753632489482831
-    second: gateOpening_58
+    second: gate_58
   - first:
       213: 1203607411381593241
-    second: gateOpening_59
+    second: gate_59
   - first:
       213: -7759561000284364081
-    second: gateOpening_60
+    second: gate_60
   - first:
       213: -5047796953617589391
-    second: gateOpening_61
+    second: gate_61
   - first:
       213: -795393785806770228
-    second: gateOpening_62
+    second: gate_62
   - first:
       213: 5236061257233693072
-    second: gateOpening_63
+    second: gate_63
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -154,7 +154,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 64
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -199,7 +199,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: gateOpening_0
+      name: gate_0
       rect:
         serializedVersion: 2
         x: 20
@@ -220,7 +220,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gateOpening_1
+      name: gate_1
       rect:
         serializedVersion: 2
         x: 84
@@ -241,7 +241,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gateOpening_2
+      name: gate_2
       rect:
         serializedVersion: 2
         x: 148
@@ -262,7 +262,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gateOpening_3
+      name: gate_3
       rect:
         serializedVersion: 2
         x: 212
@@ -283,7 +283,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gateOpening_4
+      name: gate_4
       rect:
         serializedVersion: 2
         x: 276
@@ -304,7 +304,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gateOpening_5
+      name: gate_5
       rect:
         serializedVersion: 2
         x: 340
@@ -325,7 +325,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gateOpening_6
+      name: gate_6
       rect:
         serializedVersion: 2
         x: 404
@@ -346,7 +346,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gateOpening_7
+      name: gate_7
       rect:
         serializedVersion: 2
         x: 468
@@ -367,7 +367,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gateOpening_8
+      name: gate_8
       rect:
         serializedVersion: 2
         x: 20
@@ -388,7 +388,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gateOpening_9
+      name: gate_9
       rect:
         serializedVersion: 2
         x: 84
@@ -409,7 +409,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gateOpening_10
+      name: gate_10
       rect:
         serializedVersion: 2
         x: 148
@@ -430,7 +430,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gateOpening_11
+      name: gate_11
       rect:
         serializedVersion: 2
         x: 212
@@ -451,7 +451,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gateOpening_12
+      name: gate_12
       rect:
         serializedVersion: 2
         x: 276
@@ -472,7 +472,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gateOpening_13
+      name: gate_13
       rect:
         serializedVersion: 2
         x: 340
@@ -493,7 +493,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gateOpening_14
+      name: gate_14
       rect:
         serializedVersion: 2
         x: 404
@@ -514,7 +514,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gateOpening_15
+      name: gate_15
       rect:
         serializedVersion: 2
         x: 468
@@ -535,7 +535,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gateOpening_16
+      name: gate_16
       rect:
         serializedVersion: 2
         x: 20
@@ -556,7 +556,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gateOpening_17
+      name: gate_17
       rect:
         serializedVersion: 2
         x: 84
@@ -577,7 +577,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gateOpening_18
+      name: gate_18
       rect:
         serializedVersion: 2
         x: 148
@@ -598,7 +598,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gateOpening_19
+      name: gate_19
       rect:
         serializedVersion: 2
         x: 212
@@ -619,7 +619,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gateOpening_20
+      name: gate_20
       rect:
         serializedVersion: 2
         x: 276
@@ -640,7 +640,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gateOpening_21
+      name: gate_21
       rect:
         serializedVersion: 2
         x: 340
@@ -661,7 +661,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gateOpening_22
+      name: gate_22
       rect:
         serializedVersion: 2
         x: 404
@@ -682,7 +682,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gateOpening_23
+      name: gate_23
       rect:
         serializedVersion: 2
         x: 468
@@ -703,7 +703,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gateOpening_24
+      name: gate_24
       rect:
         serializedVersion: 2
         x: 20
@@ -724,7 +724,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gateOpening_25
+      name: gate_25
       rect:
         serializedVersion: 2
         x: 84
@@ -745,7 +745,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gateOpening_26
+      name: gate_26
       rect:
         serializedVersion: 2
         x: 148
@@ -766,7 +766,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gateOpening_27
+      name: gate_27
       rect:
         serializedVersion: 2
         x: 212
@@ -787,7 +787,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gateOpening_28
+      name: gate_28
       rect:
         serializedVersion: 2
         x: 276
@@ -808,7 +808,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gateOpening_29
+      name: gate_29
       rect:
         serializedVersion: 2
         x: 340
@@ -829,7 +829,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gateOpening_30
+      name: gate_30
       rect:
         serializedVersion: 2
         x: 404
@@ -850,7 +850,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gateOpening_31
+      name: gate_31
       rect:
         serializedVersion: 2
         x: 468
@@ -871,7 +871,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gateOpening_32
+      name: gate_32
       rect:
         serializedVersion: 2
         x: 20
@@ -892,7 +892,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gateOpening_33
+      name: gate_33
       rect:
         serializedVersion: 2
         x: 84
@@ -913,7 +913,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gateOpening_34
+      name: gate_34
       rect:
         serializedVersion: 2
         x: 148
@@ -934,7 +934,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gateOpening_35
+      name: gate_35
       rect:
         serializedVersion: 2
         x: 212
@@ -955,7 +955,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gateOpening_36
+      name: gate_36
       rect:
         serializedVersion: 2
         x: 276
@@ -976,10 +976,10 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gateOpening_37
+      name: gate_37
       rect:
         serializedVersion: 2
-        x: 339
+        x: 340
         y: 256
         width: 21
         height: 64
@@ -997,7 +997,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gateOpening_38
+      name: gate_38
       rect:
         serializedVersion: 2
         x: 404
@@ -1018,7 +1018,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gateOpening_39
+      name: gate_39
       rect:
         serializedVersion: 2
         x: 468
@@ -1039,7 +1039,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gateOpening_40
+      name: gate_40
       rect:
         serializedVersion: 2
         x: 20
@@ -1060,7 +1060,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gateOpening_41
+      name: gate_41
       rect:
         serializedVersion: 2
         x: 84
@@ -1081,7 +1081,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gateOpening_42
+      name: gate_42
       rect:
         serializedVersion: 2
         x: 148
@@ -1102,7 +1102,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gateOpening_43
+      name: gate_43
       rect:
         serializedVersion: 2
         x: 212
@@ -1123,7 +1123,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gateOpening_44
+      name: gate_44
       rect:
         serializedVersion: 2
         x: 276
@@ -1144,7 +1144,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gateOpening_45
+      name: gate_45
       rect:
         serializedVersion: 2
         x: 340
@@ -1165,7 +1165,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gateOpening_46
+      name: gate_46
       rect:
         serializedVersion: 2
         x: 404
@@ -1186,7 +1186,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gateOpening_47
+      name: gate_47
       rect:
         serializedVersion: 2
         x: 468
@@ -1207,7 +1207,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gateOpening_48
+      name: gate_48
       rect:
         serializedVersion: 2
         x: 20
@@ -1228,7 +1228,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gateOpening_49
+      name: gate_49
       rect:
         serializedVersion: 2
         x: 84
@@ -1249,7 +1249,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gateOpening_50
+      name: gate_50
       rect:
         serializedVersion: 2
         x: 148
@@ -1270,7 +1270,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gateOpening_51
+      name: gate_51
       rect:
         serializedVersion: 2
         x: 212
@@ -1291,7 +1291,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gateOpening_52
+      name: gate_52
       rect:
         serializedVersion: 2
         x: 276
@@ -1312,7 +1312,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gateOpening_53
+      name: gate_53
       rect:
         serializedVersion: 2
         x: 340
@@ -1333,7 +1333,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gateOpening_54
+      name: gate_54
       rect:
         serializedVersion: 2
         x: 404
@@ -1354,7 +1354,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gateOpening_55
+      name: gate_55
       rect:
         serializedVersion: 2
         x: 468
@@ -1375,7 +1375,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gateOpening_56
+      name: gate_56
       rect:
         serializedVersion: 2
         x: 20
@@ -1396,7 +1396,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gateOpening_57
+      name: gate_57
       rect:
         serializedVersion: 2
         x: 84
@@ -1417,7 +1417,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gateOpening_58
+      name: gate_58
       rect:
         serializedVersion: 2
         x: 148
@@ -1438,7 +1438,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gateOpening_59
+      name: gate_59
       rect:
         serializedVersion: 2
         x: 212
@@ -1459,7 +1459,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gateOpening_60
+      name: gate_60
       rect:
         serializedVersion: 2
         x: 276
@@ -1480,7 +1480,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gateOpening_61
+      name: gate_61
       rect:
         serializedVersion: 2
         x: 340
@@ -1501,7 +1501,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gateOpening_62
+      name: gate_62
       rect:
         serializedVersion: 2
         x: 404
@@ -1522,7 +1522,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gateOpening_63
+      name: gate_63
       rect:
         serializedVersion: 2
         x: 468

@@ -78,10 +78,8 @@ public class TreasureChest : MonoBehaviour
                 lootable = true;
                 break;
 
-            // It hit some other collider, so it can be destroyed
-            default:
-                Destroy(this.gameObject);
-                break;
+            // Do nothing
+            default: break;
         }
     }
 

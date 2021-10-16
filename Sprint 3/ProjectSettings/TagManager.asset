@@ -6,10 +6,8 @@ TagManager:
   tags:
   - Ground
   - NoEnemy
-  - Mage
-  - Knight
-  - Spearmen
   - Enemy
+  - Gate
   layers:
   - Default
   - TransparentFX
