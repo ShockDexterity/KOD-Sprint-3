@@ -6,13 +6,13 @@ public class Spearmen : MonoBehaviour
 {
     public GameObject player;           // The player
     private float playerX;              // Player x coord
-    private float knightX;              // Knight x coord
+    private float spearmenX;              // Spearmen x coord
     private float playerY;              // Player y coord
-    private float knightY;              // Knight y coord
+    private float spearmenY;              // Spearmen y coord
 
-    private Rigidbody2D physics;        // Holds the knight's rigidbody for movement
+    private Rigidbody2D physics;        // Holds the Spearmen's rigidbody for movement
     public bool facingLeft;             // Is the mage facing left? based on initial spritesheet
-    private int health = 8;             // Health of the knight
+    private int health = 8;             // Health of the Spearmen
 
     public float attackRate;            // Time between attacks
     private float nextAttack;           // Time of next attack
@@ -27,12 +27,22 @@ public class Spearmen : MonoBehaviour
     public int dirX;                    // Direction of movement
     public bool seesPlayer;             // Did the mage see the player?
 
-    public Animator animator;           // Knight animation control
-    public bool idle;                   // Is the knight idle?
+    public Animator animator;           // Spearmen animation control
+    public bool idle;                   // Is the Spearmen idle?
+
+    public BoxCollider2D boxCollider2D;
+    public Vector3 lootSpawnPoint;
+    private float bottomOfSpearmen;
+    public GameObject lootPrefab;
+
+    // ALMOST IDENTICAL TO KNIGHT.CS, CHECK THERE FOR COMMENTS
 
     // Start is called before the first frame update
     void Start()
     {
+        boxCollider2D = this.GetComponent<BoxCollider2D>();
+        bottomOfSpearmen = boxCollider2D.size.y / 2f;
+
         // Enemies won't collide
         Physics2D.IgnoreLayerCollision(10, 10);
 
@@ -55,7 +65,7 @@ public class Spearmen : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // If the knight doesn't see the player
+        // If the Spearmen doesn't see the player
         if (!this.seesPlayer)
         {
             // Update movement
@@ -65,7 +75,7 @@ public class Spearmen : MonoBehaviour
                 this.moveCounter = 0f;
             }
 
-            // Which way is the knight facing?
+            // Which way is the Spearmen facing?
             switch (this.dirX)
             {
                 case 1:
@@ -88,7 +98,7 @@ public class Spearmen : MonoBehaviour
                     break;
             }
 
-            // Move the knight
+            // Move the Spearmen
             this.physics.velocity = speed * dirX;
 
             moveCounter += Time.deltaTime;
@@ -96,19 +106,19 @@ public class Spearmen : MonoBehaviour
             // Look for player
             FindPlayer();
         }
-        else // After the knight sees the player
+        else // After the Spearmen sees the player
         {
 
             // Look for player and move towards them
             playerX = player.transform.position.x;
-            knightX = this.transform.position.x;
-            if (playerX > knightX)
+            spearmenX = this.transform.position.x;
+            if (playerX > spearmenX)
             {
                 this.transform.localScale = Vector3.one;
                 this.facingLeft = false;
                 dirX = 1;
             }
-            else if (playerX < knightX)
+            else if (playerX < spearmenX)
             {
                 this.transform.localScale = new Vector3(-1, 1, 1);
                 this.facingLeft = true;
@@ -136,14 +146,14 @@ public class Spearmen : MonoBehaviour
     {
         this.playerX = player.transform.position.x;
         this.playerY = player.transform.position.y;
-        this.knightX = this.transform.position.x;
-        this.knightY = this.transform.position.y;
+        this.spearmenX = this.transform.position.x;
+        this.spearmenY = this.transform.position.y;
 
-        if (Mathf.Abs(this.playerY - this.knightY) < 2)
+        if (Mathf.Abs(this.playerY - this.spearmenY) < 2)
         {
-            if (this.playerX > this.knightX && !this.facingLeft)
+            if (this.playerX > this.spearmenX && !this.facingLeft)
             {
-                if (this.playerX - this.knightX <= 5f)
+                if (this.playerX - this.spearmenX <= 5f)
                 {
                     this.seesPlayer = true;
                     // No longer idle
@@ -151,9 +161,9 @@ public class Spearmen : MonoBehaviour
                     return;
                 }//end if
             }//end if
-            else if (this.playerX < this.knightX && this.facingLeft)
+            else if (this.playerX < this.spearmenX && this.facingLeft)
             {
-                if (Mathf.Abs(this.playerX - this.knightX) <= 5f)
+                if (Mathf.Abs(this.playerX - this.spearmenX) <= 5f)
                 {
                     this.seesPlayer = true;
                     // No longer idle
@@ -164,17 +174,31 @@ public class Spearmen : MonoBehaviour
         }//end if
     }//end FindPlayer()
 
-    // Knight can take damage and die
+    // Spearmen can take damage and die
     public void TakeDamage(int outsideDamage)
     {
         this.health -= outsideDamage;
         if (this.health < 1)
         {
+            DropLoot();
             Destroy(this.gameObject);
         }
     }
 
-    // Knight attack control
+    private void DropLoot()
+    {
+        float xPos = this.transform.position.x;
+        float yPos = this.transform.position.y;
+        float zPos = this.transform.position.z;
+        CircleCollider2D lootCollider = lootPrefab.GetComponent<CircleCollider2D>();
+        float lootCenter = lootCollider.radius;
+
+        Vector3 coinSpawnPoint = new Vector3(xPos, yPos - bottomOfSpearmen + lootCenter, zPos);
+
+        Instantiate(lootPrefab, coinSpawnPoint, Quaternion.identity);
+    }
+
+    // Spearmen attack control
     void Attack()
     {
         this.animator.SetTrigger("Attack");
@@ -186,8 +210,8 @@ public class Spearmen : MonoBehaviour
         }
     }
 
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
-    }
+    // private void OnDrawGizmosSelected()
+    // {
+    //     Gizmos.DrawWireSphere(attackPoint.position, attackRange);
+    // }
 }

@@ -209,3 +209,4 @@ MonoBehaviour:
   idle: 0
   boxCollider2D: {fileID: 0}
   lootSpawnPoint: {x: 0, y: 0, z: 0}
+  lootPrefab: {fileID: 8185479508125929106, guid: 931799548f387964fa42fc25cbdf452c, type: 3}

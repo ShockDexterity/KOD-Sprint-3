@@ -29,11 +29,19 @@ public class Mage : MonoBehaviour
     public bool idle;
     public bool attacking;
 
+    public BoxCollider2D boxCollider2D;
+    public Vector3 lootSpawnPoint;
+    private float bottomOfMage;
+    public GameObject lootPrefab;
+
     // ALMOST IDENTICAL TO KNIGHT.CS, CHECK THERE FOR COMMENTS
 
     // Start is called before the first frame update
     void Start()
     {
+        boxCollider2D = this.GetComponent<BoxCollider2D>();
+        bottomOfMage = boxCollider2D.size.y / 2f;
+
         Physics2D.IgnoreLayerCollision(11, 11);
 
         player = GameObject.FindGameObjectWithTag("Player");
@@ -178,13 +186,24 @@ public class Mage : MonoBehaviour
     // Allows the mage to take damage and die
     public void TakeDamage(int outsideDamage)
     {
-        Debug.Log("outsideDamage is " + outsideDamage);
         this.health -= outsideDamage;
-        Debug.Log("Mage health is now " + health);
-
         if (this.health < 1)
         {
+            DropLoot();
             Destroy(this.gameObject);
         }
+    }
+
+    private void DropLoot()
+    {
+        float xPos = this.transform.position.x;
+        float yPos = this.transform.position.y;
+        float zPos = this.transform.position.z;
+        CircleCollider2D lootCollider = lootPrefab.GetComponent<CircleCollider2D>();
+        float lootCenter = lootCollider.radius;
+
+        Vector3 coinSpawnPoint = new Vector3(xPos, yPos - bottomOfMage + lootCenter, zPos);
+
+        Instantiate(lootPrefab, coinSpawnPoint, Quaternion.identity);
     }
 }

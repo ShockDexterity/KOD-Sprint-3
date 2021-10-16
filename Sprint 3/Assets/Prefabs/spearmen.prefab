@@ -177,6 +177,9 @@ MonoBehaviour:
   seesPlayer: 0
   animator: {fileID: 8315164093804575841}
   idle: 0
+  boxCollider2D: {fileID: 0}
+  lootSpawnPoint: {x: 0, y: 0, z: 0}
+  lootPrefab: {fileID: 8185479508125929106, guid: 931799548f387964fa42fc25cbdf452c, type: 3}
 --- !u!1 &8315164093928379091
 GameObject:
   m_ObjectHideFlags: 0
