@@ -24,7 +24,7 @@ public class PlayerMeleeAttack : MonoBehaviour
     void Update()
     {
         // Check if user can attack
-        if (Input.GetMouseButtonDown(0) && (Time.time > nextAttack))
+        if (!animator.GetBool("isJumping") && Input.GetMouseButtonDown(0) && (Time.time > nextAttack))
         {
             nextAttack = Time.time + attackRate;
             Attack();
@@ -63,8 +63,8 @@ public class PlayerMeleeAttack : MonoBehaviour
     }//end Attack()
 
     // Allows the range to be seen
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
-    }//end OnDrawGizmosSelected()
+    // private void OnDrawGizmosSelected()
+    // {
+    //     Gizmos.DrawWireSphere(attackPoint.position, attackRange);
+    // }//end OnDrawGizmosSelected()
 }//end PlayerMeleeAttack

@@ -1,49 +1,16 @@
 fileFormatVersion: 2
-guid: cea1c8e113660f1448402b1663d0447d
+guid: 826b57f53598b2b4db8990a59013ee7d
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2467926855243572179
-    second: gem_3_0
+      213: -1921579788390770680
+    second: playerFalling_0
   - first:
-      213: 5936563804897673083
-    second: gem_3_1
+      213: 2185081793677420134
+    second: playerFalling_1
   - first:
-      213: -7497588556571721140
-    second: gem_3_2
-  - first:
-      213: -8877157421963847302
-    second: gem_3_3
-  - first:
-      213: 5798774260115571791
-    second: gem_3_4
-  - first:
-      213: 5322716137345333260
-    second: gem_3_5
-  - first:
-      213: -99593520576918496
-    second: gem_3_6
-  - first:
-      213: 3101620098322230698
-    second: gem3_0
-  - first:
-      213: -7663285181318695518
-    second: gem3_1
-  - first:
-      213: -7791672042717357582
-    second: gem3_2
-  - first:
-      213: -1184359515106664457
-    second: gem3_3
-  - first:
-      213: -2628389423703958577
-    second: gem3_4
-  - first:
-      213: -5035751503494648044
-    second: gem3_5
-  - first:
-      213: 7576179437642235965
-    second: gem3_6
+      213: -1314222129892255255
+    second: playerFalling_2
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -88,7 +55,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 96
+  spritePixelsToUnits: 64
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -133,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: gem3_0
+      name: playerFalling_0
       rect:
         serializedVersion: 2
-        x: 1
-        y: 5
-        width: 21
-        height: 21
+        x: 80
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -147,20 +114,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: aad65bcdb0b2b0b20800000000000000
-      internalID: 3101620098322230698
+      spriteID: 808d5690d5d2555e0800000000000000
+      internalID: -1921579788390770680
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gem3_1
+      name: playerFalling_1
       rect:
         serializedVersion: 2
-        x: 24
-        y: 5
-        width: 21
-        height: 21
+        x: 160
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -168,20 +135,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2a5fbfababa86a590800000000000000
-      internalID: -7663285181318695518
+      spriteID: 666e0557058f25e10800000000000000
+      internalID: 2185081793677420134
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gem3_2
+      name: playerFalling_2
       rect:
         serializedVersion: 2
-        x: 47
-        y: 5
-        width: 21
-        height: 21
+        x: 240
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -189,92 +156,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2f95d772f8b6ed390800000000000000
-      internalID: -7791672042717357582
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: gem3_3
-      rect:
-        serializedVersion: 2
-        x: 70
-        y: 5
-        width: 21
-        height: 21
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7ff96b7cb4f409fe0800000000000000
-      internalID: -1184359515106664457
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: gem3_4
-      rect:
-        serializedVersion: 2
-        x: 93
-        y: 5
-        width: 21
-        height: 21
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: fcb5bb4beb5168bd0800000000000000
-      internalID: -2628389423703958577
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: gem3_5
-      rect:
-        serializedVersion: 2
-        x: 116
-        y: 5
-        width: 21
-        height: 21
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 41fef0920ba6d1ab0800000000000000
-      internalID: -5035751503494648044
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: gem3_6
-      rect:
-        serializedVersion: 2
-        x: 139
-        y: 5
-        width: 21
-        height: 21
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d30c847ee0ff32960800000000000000
-      internalID: 7576179437642235965
+      spriteID: 9e990d79fe1f2cde0800000000000000
+      internalID: -1314222129892255255
       vertices: []
       indices: 
       edges: []

@@ -33,7 +33,7 @@ public class PlayerFireAttack : MonoBehaviour
     void Update()
     {
         // Check if player can attack
-        if (Input.GetKeyDown(KeyCode.F) && (Time.time > nextAttack))
+        if (!animator.GetBool("isJumping") && Input.GetKeyDown(KeyCode.F) && (Time.time > nextAttack))
         {
             nextAttack = Time.time + attackRate;
             timeAttackStart = Time.time;

@@ -1,55 +1,28 @@
 fileFormatVersion: 2
-guid: 3bd6035eadc24834793cf5cd85f4c1c2
+guid: 843ce3c7b98248b43ad6e652d3150f6d
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4418996503665397266
-    second: gem_4_0
+      213: -3125774657158638297
+    second: playerLanding_0
   - first:
-      213: -871202668477529344
-    second: gem_4_1
+      213: -8430761601389750224
+    second: playerLanding_1
   - first:
-      213: -3529273012350983414
-    second: gem_4_2
+      213: -6745311784987502859
+    second: playerLanding_2
   - first:
-      213: -3617894181580742228
-    second: gem_4_3
+      213: 3774848708546381723
+    second: playerLanding_3
   - first:
-      213: -4512571109553410296
-    second: gem_4_4
+      213: 4983331120828633414
+    second: playerLanding_4
   - first:
-      213: -1502601236850347505
-    second: gem_4_5
+      213: 8771480423468205521
+    second: playerLanding_5
   - first:
-      213: 7547642384516171634
-    second: gem_4_6
-  - first:
-      213: -381206793841723591
-    second: gem_4_7
-  - first:
-      213: -5188286300345909725
-    second: gem4_0
-  - first:
-      213: -9206114639494154489
-    second: gem4_1
-  - first:
-      213: -6344524840839735479
-    second: gem4_2
-  - first:
-      213: 3185363082593776275
-    second: gem4_3
-  - first:
-      213: 8672574508063597113
-    second: gem4_4
-  - first:
-      213: 7507684492297632555
-    second: gem4_5
-  - first:
-      213: -2308893671765608566
-    second: gem4_6
-  - first:
-      213: 1163430929088774221
-    second: gem4_7
+      213: -3011397511444936857
+    second: playerLanding_6
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -94,7 +67,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 96
+  spritePixelsToUnits: 64
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -139,13 +112,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: gem4_0
+      name: playerLanding_0
       rect:
         serializedVersion: 2
-        x: 1
-        y: 3
-        width: 13
-        height: 25
+        x: 80
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -153,20 +126,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 32e3bda39118ff7b0800000000000000
-      internalID: -5188286300345909725
+      spriteID: 7251428a2840f94d0800000000000000
+      internalID: -3125774657158638297
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gem4_1
+      name: playerLanding_1
       rect:
         serializedVersion: 2
-        x: 16
-        y: 3
-        width: 13
-        height: 25
+        x: 160
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -174,20 +147,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7077d6fe28f4d3080800000000000000
-      internalID: -9206114639494154489
+      spriteID: 038192bddfaeffa80800000000000000
+      internalID: -8430761601389750224
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gem4_2
+      name: playerLanding_2
       rect:
         serializedVersion: 2
-        x: 31
-        y: 3
-        width: 13
-        height: 25
+        x: 240
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -195,20 +168,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9471b11a548b3f7a0800000000000000
-      internalID: -6344524840839735479
+      spriteID: 5f650947ba6d362a0800000000000000
+      internalID: -6745311784987502859
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gem4_3
+      name: playerLanding_3
       rect:
         serializedVersion: 2
-        x: 46
-        y: 3
-        width: 13
-        height: 25
+        x: 320
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -216,20 +189,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 39235aac8dea43c20800000000000000
-      internalID: 3185363082593776275
+      spriteID: b97cfb186e4f26430800000000000000
+      internalID: 3774848708546381723
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gem4_4
+      name: playerLanding_4
       rect:
         serializedVersion: 2
-        x: 61
-        y: 3
-        width: 13
-        height: 25
+        x: 400
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -237,20 +210,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9322d39d09c2b5870800000000000000
-      internalID: 8672574508063597113
+      spriteID: 641d3276049582540800000000000000
+      internalID: 4983331120828633414
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gem4_5
+      name: playerLanding_5
       rect:
         serializedVersion: 2
-        x: 76
-        y: 3
-        width: 13
-        height: 25
+        x: 480
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -258,20 +231,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b2bfb11b447a03860800000000000000
-      internalID: 7507684492297632555
+      spriteID: 1d58d1bc8fe8ab970800000000000000
+      internalID: 8771480423468205521
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gem4_6
+      name: playerLanding_6
       rect:
         serializedVersion: 2
-        x: 91
-        y: 3
-        width: 13
-        height: 25
+        x: 559
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -279,29 +252,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a877346407925ffd0800000000000000
-      internalID: -2308893671765608566
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: gem4_7
-      rect:
-        serializedVersion: 2
-        x: 106
-        y: 3
-        width: 13
-        height: 25
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d400a011446552010800000000000000
-      internalID: 1163430929088774221
+      spriteID: 76744dc1bed5536d0800000000000000
+      internalID: -3011397511444936857
       vertices: []
       indices: 
       edges: []

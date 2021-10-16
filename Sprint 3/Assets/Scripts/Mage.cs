@@ -31,7 +31,7 @@ public class Mage : MonoBehaviour
 
     public BoxCollider2D boxCollider2D;
     public Vector3 lootSpawnPoint;
-    private float bottomOfMage;
+    private float centerOfMage;
     public GameObject lootPrefab;
 
     // ALMOST IDENTICAL TO KNIGHT.CS, CHECK THERE FOR COMMENTS
@@ -40,7 +40,7 @@ public class Mage : MonoBehaviour
     void Start()
     {
         boxCollider2D = this.GetComponent<BoxCollider2D>();
-        bottomOfMage = boxCollider2D.size.y / 2f;
+        centerOfMage = boxCollider2D.size.y / 2f;
 
         Physics2D.IgnoreLayerCollision(11, 11);
 
@@ -202,7 +202,7 @@ public class Mage : MonoBehaviour
         CircleCollider2D lootCollider = lootPrefab.GetComponent<CircleCollider2D>();
         float lootCenter = lootCollider.radius;
 
-        Vector3 coinSpawnPoint = new Vector3(xPos, yPos - bottomOfMage + lootCenter, zPos);
+        Vector3 coinSpawnPoint = new Vector3(xPos, yPos - centerOfMage + lootCenter, zPos);
 
         Instantiate(lootPrefab, coinSpawnPoint, Quaternion.identity);
     }

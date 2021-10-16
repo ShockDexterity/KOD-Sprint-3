@@ -32,14 +32,14 @@ public class Knight : MonoBehaviour
 
     public BoxCollider2D boxCollider2D;
     public Vector3 lootSpawnPoint;
-    private float bottomOfKnight;
+    private float centerOfKnight;
     public GameObject lootPrefab;
 
     // Start is called before the first frame update
     void Start()
     {
         boxCollider2D = this.GetComponent<BoxCollider2D>();
-        bottomOfKnight = boxCollider2D.size.y / 2f;
+        centerOfKnight = boxCollider2D.size.y / 2f;
 
         // Enemies won't collide
         Physics2D.IgnoreLayerCollision(10, 10);
@@ -191,7 +191,7 @@ public class Knight : MonoBehaviour
         CircleCollider2D lootCollider = lootPrefab.GetComponent<CircleCollider2D>();
         float lootCenter = lootCollider.radius;
 
-        Vector3 coinSpawnPoint = new Vector3(xPos, yPos - bottomOfKnight + lootCenter, zPos);
+        Vector3 coinSpawnPoint = new Vector3(xPos, yPos - centerOfKnight + lootCenter, zPos);
 
         Instantiate(lootPrefab, coinSpawnPoint, Quaternion.identity);
     }

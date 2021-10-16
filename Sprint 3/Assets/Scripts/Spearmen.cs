@@ -32,7 +32,7 @@ public class Spearmen : MonoBehaviour
 
     public BoxCollider2D boxCollider2D;
     public Vector3 lootSpawnPoint;
-    private float bottomOfSpearmen;
+    private float centerOfSpearmen;
     public GameObject lootPrefab;
 
     // ALMOST IDENTICAL TO KNIGHT.CS, CHECK THERE FOR COMMENTS
@@ -41,7 +41,7 @@ public class Spearmen : MonoBehaviour
     void Start()
     {
         boxCollider2D = this.GetComponent<BoxCollider2D>();
-        bottomOfSpearmen = boxCollider2D.size.y / 2f;
+        centerOfSpearmen = boxCollider2D.size.y / 2f;
 
         // Enemies won't collide
         Physics2D.IgnoreLayerCollision(10, 10);
@@ -193,7 +193,7 @@ public class Spearmen : MonoBehaviour
         CircleCollider2D lootCollider = lootPrefab.GetComponent<CircleCollider2D>();
         float lootCenter = lootCollider.radius;
 
-        Vector3 coinSpawnPoint = new Vector3(xPos, yPos - bottomOfSpearmen + lootCenter, zPos);
+        Vector3 coinSpawnPoint = new Vector3(xPos, yPos - centerOfSpearmen + lootCenter, zPos);
 
         Instantiate(lootPrefab, coinSpawnPoint, Quaternion.identity);
     }

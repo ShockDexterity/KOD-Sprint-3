@@ -136,6 +136,7 @@ public class Player : MonoBehaviour
 
                     // Set new horizontal velocity while keeping vertical velocity
                     physics.velocity = new Vector2(-speed, physics.velocity.y);
+                    animator.SetFloat("yVel", physics.velocity.y);
                 }//end else if
 
                 else
