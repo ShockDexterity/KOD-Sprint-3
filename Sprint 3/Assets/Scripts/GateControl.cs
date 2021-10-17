@@ -45,10 +45,9 @@ public class GateControl : MonoBehaviour
             this.gameObject.GetComponent<SpriteRenderer>().enabled = false;
         }
 
-        if (canEnter && Time.time > (timeOpened + enterDelay) && Input.GetKeyDown(KeyCode.E))
+        if (Time.time > (timeOpened + enterDelay))
         {
-            Debug.Log("Key Pressed");
-            SceneManager.LoadScene("YouWin");
+            Destroy(this.gameObject);
         }
     }
 
@@ -58,21 +57,21 @@ public class GateControl : MonoBehaviour
         timeOpened = Time.time;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        switch (collision.gameObject.tag)
-        {
-            case "Player":
-                if (opened) { canEnter = true; }
-                break;
+    // private void OnTriggerEnter2D(Collider2D collision)
+    // {
+    //     switch (collision.gameObject.tag)
+    //     {
+    //         case "Player":
+    //             if (opened) { canEnter = true; }
+    //             break;
 
-            // Do nothing
-            default: break;
-        }
-    }
+    //         // Do nothing
+    //         default: break;
+    //     }
+    // }
 
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        canEnter = false;
-    }
+    // private void OnTriggerExit2D(Collider2D other)
+    // {
+    //     canEnter = false;
+    // }
 }

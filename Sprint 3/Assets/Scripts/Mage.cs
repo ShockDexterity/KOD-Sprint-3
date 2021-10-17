@@ -144,7 +144,6 @@ public class Mage : MonoBehaviour
                 this.attacking = false;
                 this.anim.SetBool("isAttacking", this.attacking);
             }
-
         }
     }
 

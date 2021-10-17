@@ -1,22 +1,13 @@
 fileFormatVersion: 2
-guid: 0884e859efe1e1c4aab188dd0b190058
+guid: e13ccd121bc9d6740bedb5d6242ea4e5
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3311017972120570427
-    second: frostBreathProjectile_0
+      213: -3714059655151306871
+    second: doorway_0
   - first:
-      213: 45933589585369428
-    second: frostBreathProjectile_1
-  - first:
-      213: 1519214880078768426
-    second: frostBreathProjectile_2
-  - first:
-      213: 2837998983675307696
-    second: frostBreathProjectile_3
-  - first:
-      213: 7144025892008206609
-    second: frostBreathProjectile_4
+      213: 8153166199257765203
+    second: doorway_1
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -106,106 +97,43 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: frostBreathProjectile_0
+      name: doorway_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 171
-        width: 26
-        height: 15
+        y: 64
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b3a4e299d4913fd20800000000000000
-      internalID: 3311017972120570427
+      spriteID: 987b81ceb62057cc0800000000000000
+      internalID: -3714059655151306871
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: frostBreathProjectile_1
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 171
-        width: 26
-        height: 15
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4599e7a3b5033a000800000000000000
-      internalID: 45933589585369428
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: frostBreathProjectile_2
+      name: doorway_1
       rect:
         serializedVersion: 2
         x: 0
-        y: 107
-        width: 26
-        height: 15
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a29259062e5551510800000000000000
-      internalID: 1519214880078768426
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: frostBreathProjectile_3
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 107
-        width: 26
-        height: 15
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0b6e2ee0a09926720800000000000000
-      internalID: 2837998983675307696
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: frostBreathProjectile_4
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 43
-        width: 26
-        height: 15
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 111a757b2bda42360800000000000000
-      internalID: 7144025892008206609
+      spriteID: 3551b7df57dd52170800000000000000
+      internalID: 8153166199257765203
       vertices: []
       indices: 
       edges: []

@@ -39,10 +39,8 @@ public class Switch : MonoBehaviour
                 toggleable = true;
                 break;
 
-            // It hit some other collider, so it can be destroyed
-            default:
-                Destroy(this.gameObject);
-                break;
+            // The player didn't walk into it so do nothing
+            default: break;
         }
     }
 

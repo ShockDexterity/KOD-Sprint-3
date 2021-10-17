@@ -78,7 +78,7 @@ public class TreasureChest : MonoBehaviour
                 lootable = true;
                 break;
 
-            // Do nothing
+            // The player didn't walk into it so do nothing
             default: break;
         }
     }

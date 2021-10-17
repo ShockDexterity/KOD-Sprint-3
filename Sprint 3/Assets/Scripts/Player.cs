@@ -16,6 +16,7 @@ public class Player : MonoBehaviour
     private Animator animator;      // Animator of the player
     private bool idle;              // Is the player idle?
     public bool blocking;           // Is the player currently blocking?
+    public bool facingLeft;
 
     private float timeJumped;       // When the player jumped
     private float jumpDelay;        // When the force will be applied
@@ -27,6 +28,12 @@ public class Player : MonoBehaviour
     public int totalLoot;
     public int coinCount;
     public int gemCount;
+
+    // Allows other scripts to get the players direction
+    public bool Direction()
+    {
+        return facingLeft;
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -58,6 +65,7 @@ public class Player : MonoBehaviour
         inJumpDelay = false;
         alive = true;
         timeOfDeath = 0;
+        facingLeft = false;
 
         // The player is able to pass through what the enemies can't
         Physics2D.IgnoreLayerCollision(11, 12);
@@ -117,9 +125,11 @@ public class Player : MonoBehaviour
 
                     // Change player direction
                     this.transform.localScale = new Vector3(1, 1, 1);
+                    facingLeft = true;
 
                     // Set new horizontal velocity while keeping vertical velocity
                     physics.velocity = new Vector2(speed, physics.velocity.y);
+                    animator.SetFloat("yVel", physics.velocity.y);
                 }//end if
 
                 else if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
@@ -133,6 +143,7 @@ public class Player : MonoBehaviour
 
                     // Change player direction
                     this.transform.localScale = new Vector3(-1, 1, 1);
+                    facingLeft = false;
 
                     // Set new horizontal velocity while keeping vertical velocity
                     physics.velocity = new Vector2(-speed, physics.velocity.y);

@@ -8,6 +8,7 @@ TagManager:
   - NoEnemy
   - Enemy
   - Gate
+  - AttackPass
   layers:
   - Default
   - TransparentFX
