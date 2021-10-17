@@ -57,7 +57,7 @@ public class Player : MonoBehaviour
         }
         // Setting default values
         speed = 2.5f;
-        jumpForce = 6f;
+        jumpForce = 8f;
         jumping = false;
         idle = true;
         health = maxHealth;
@@ -161,7 +161,7 @@ public class Player : MonoBehaviour
                 }//end else
             }//end if blocking
         }//end if alive
-        else if (timeOfDeath != 0 && Time.time > timeOfDeath + 10f)
+        else if (timeOfDeath != 0f) //&& Time.time > timeOfDeath + 10f)
         {
             physics.velocity = Vector2.zero;
         }
@@ -217,8 +217,9 @@ public class Player : MonoBehaviour
         Debug.Log("You acquired some loot! Your total loot is now: " + totalLoot);
     }
 
-    private void Die()
+    public void Die()
     {
+        physics.velocity = Vector2.zero;
         timeOfDeath = Time.time;
 
         // can't do anything anymore
