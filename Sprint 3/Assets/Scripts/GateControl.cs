@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class GateControl : MonoBehaviour
 {
@@ -45,7 +44,7 @@ public class GateControl : MonoBehaviour
             this.gameObject.GetComponent<SpriteRenderer>().enabled = false;
         }
 
-        if (Time.time > (timeOpened + enterDelay))
+        if (opened && Time.time > (timeOpened + enterDelay))
         {
             Destroy(this.gameObject);
         }

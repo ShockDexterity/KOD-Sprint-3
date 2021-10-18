@@ -34,6 +34,11 @@ public class Mage : MonoBehaviour
     private float centerOfMage;
     public GameObject lootPrefab;
 
+    private bool alive;
+    public float timeOfDeath;
+    public float deathDelay;
+    public bool lootDropped;
+
     // ALMOST IDENTICAL TO KNIGHT.CS, CHECK THERE FOR COMMENTS
 
     // Start is called before the first frame update
@@ -56,93 +61,111 @@ public class Mage : MonoBehaviour
         this.physics = this.gameObject.GetComponent<Rigidbody2D>();
         this.anim = this.gameObject.GetComponent<Animator>();
         this.speed = new Vector2(1.25f, 0f);
+        alive = true;
+        lootDropped = false;
+
+        AnimationClip[] clips = anim.runtimeAnimatorController.animationClips;
+        foreach (AnimationClip clip in clips)
+        {
+            if (clip.name == "enemyDeath") { deathDelay = clip.length; }
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!this.seesPlayer)
+        if (alive)
         {
-            if (this.moveCounter > this.moveRate)
+            if (!this.seesPlayer)
             {
-                this.ChangeDirection();
-                this.moveCounter = 0f;
-            }
+                if (this.moveCounter > this.moveRate)
+                {
+                    this.ChangeDirection();
+                    this.moveCounter = 0f;
+                }
 
-            switch (this.dirX)
-            {
-                case 1:
-                    this.idle = false;
-                    anim.SetBool("isIdle", this.idle);
-                    this.transform.localScale = new Vector3(-1, 1, 1);
-                    this.facingLeft = false;
-                    break;
+                switch (this.dirX)
+                {
+                    case 1:
+                        this.idle = false;
+                        anim.SetBool("isIdle", this.idle);
+                        this.transform.localScale = new Vector3(-1, 1, 1);
+                        this.facingLeft = false;
+                        break;
 
-                case -1:
-                    this.idle = false;
-                    anim.SetBool("isIdle", this.idle);
-                    this.transform.localScale = Vector3.one;
-                    this.facingLeft = true;
-                    break;
+                    case -1:
+                        this.idle = false;
+                        anim.SetBool("isIdle", this.idle);
+                        this.transform.localScale = Vector3.one;
+                        this.facingLeft = true;
+                        break;
 
-                case 0:
-                    this.idle = true;
-                    anim.SetBool("isIdle", this.idle);
-                    break;
-            }
+                    case 0:
+                        this.idle = true;
+                        anim.SetBool("isIdle", this.idle);
+                        break;
+                }
 
-            if (Mathf.Abs(this.physics.velocity.x) < speed.x)
-            {
-                this.physics.AddForce(speed * dirX);
+                if (Mathf.Abs(this.physics.velocity.x) < speed.x)
+                {
+                    this.physics.AddForce(speed * dirX);
+                }
+                else
+                {
+                    this.physics.velocity = speed * dirX;
+                }
+
+                moveCounter += Time.deltaTime;
+
+                FindPlayer();
             }
             else
             {
-                this.physics.velocity = speed * dirX;
+                this.idle = true;
+                anim.SetBool("isIdle", this.idle);
+
+                try
+                {
+                    playerX = player.transform.position.x;
+                    this.mageX = this.transform.position.x;
+
+                    if (playerX > mageX)
+                    {
+                        this.transform.localScale = new Vector3(-1, 1, 1);
+                        this.facingLeft = false;
+                    }
+                    else if (playerX < mageX)
+                    {
+                        this.transform.localScale = Vector3.one;
+                        this.facingLeft = true;
+                    }
+                }
+                catch { }
+
+                if (Time.time > nextAttack)
+                {
+                    this.attacking = true;
+                    this.anim.SetBool("isAttacking", this.attacking);
+                    this.nextAttack = Time.time + this.attackRate;
+
+                    float xOffset = (!facingLeft) ? 0.3f : -0.3f;
+
+                    GameObject projectile = Instantiate(attackPrefab, new Vector3(transform.position.x + xOffset, transform.position.y + .25f, 0), Quaternion.identity);
+
+                    projectile.GetComponent<MageProjectile>().Direction(facingLeft);
+                }
+                else
+                {
+                    this.attacking = false;
+                    this.anim.SetBool("isAttacking", this.attacking);
+                }
             }
-
-            moveCounter += Time.deltaTime;
-
-            FindPlayer();
         }
         else
         {
-            this.idle = true;
-            anim.SetBool("isIdle", this.idle);
-
-            try
+            if (Time.time > timeOfDeath + deathDelay)
             {
-                playerX = player.transform.position.x;
-                this.mageX = this.transform.position.x;
-
-                if (playerX > mageX)
-                {
-                    this.transform.localScale = new Vector3(-1, 1, 1);
-                    this.facingLeft = false;
-                }
-                else if (playerX < mageX)
-                {
-                    this.transform.localScale = Vector3.one;
-                    this.facingLeft = true;
-                }
-            }
-            catch { }
-
-            if (Time.time > nextAttack)
-            {
-                this.attacking = true;
-                this.anim.SetBool("isAttacking", this.attacking);
-                this.nextAttack = Time.time + this.attackRate;
-
-                float xOffset = (!facingLeft) ? 0.3f : -0.3f;
-
-                GameObject projectile = Instantiate(attackPrefab, new Vector3(transform.position.x + xOffset, transform.position.y + .25f, 0), Quaternion.identity);
-
-                projectile.GetComponent<MageProjectile>().Direction(facingLeft);
-            }
-            else
-            {
-                this.attacking = false;
-                this.anim.SetBool("isAttacking", this.attacking);
+                Destroy(this.gameObject);
             }
         }
     }
@@ -188,13 +211,18 @@ public class Mage : MonoBehaviour
         this.health -= outsideDamage;
         if (this.health < 1)
         {
-            DropLoot();
-            Destroy(this.gameObject);
+            if (!lootDropped) { DropLoot(); }
+            timeOfDeath = Time.time;
+            alive = false;
+            this.gameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
+            this.gameObject.GetComponent<BoxCollider2D>().isTrigger = true;
+            anim.SetTrigger("Dead");
         }
     }
 
     private void DropLoot()
     {
+        lootDropped = true;
         float xPos = this.transform.position.x;
         float yPos = this.transform.position.y;
         float zPos = this.transform.position.z;

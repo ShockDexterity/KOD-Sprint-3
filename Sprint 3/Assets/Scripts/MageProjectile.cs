@@ -48,6 +48,8 @@ public class MageProjectile : MonoBehaviour
             // Do nothing
             case "Enemy": break;
 
+            case "NoEnemy": break;
+
             // It hit the player and deals damage
             case "Player":
                 GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().TakeDamage(damage);

@@ -35,6 +35,11 @@ public class Knight : MonoBehaviour
     private float centerOfKnight;
     public GameObject lootPrefab;
 
+    private bool alive;
+    public float timeOfDeath;
+    public float deathDelay;
+    public bool lootDropped;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -52,82 +57,100 @@ public class Knight : MonoBehaviour
         this.attackRange = 0.5f;
         this.seesPlayer = false;
         speed = new Vector2(1.5f, 0f);
+        alive = true;
+        lootDropped = false;
 
         // Grabbing components
         this.player = GameObject.FindGameObjectWithTag("Player");
         this.physics = this.GetComponent<Rigidbody2D>();
         this.attackPoint = GameObject.Find("knightAttackPoint").GetComponent<Transform>();
         this.animator = this.GetComponent<Animator>();
+
+        AnimationClip[] clips = animator.runtimeAnimatorController.animationClips;
+        foreach (AnimationClip clip in clips)
+        {
+            if (clip.name == "enemyDeath") { deathDelay = clip.length; }
+        }
     }//end Start()
 
     // Update is called once per frame
     void Update()
     {
-        // If the knight doesn't see the player
-        if (!this.seesPlayer)
+        if (alive)
         {
-            // Update movement
-            if (this.moveCounter > this.moveRate)
+            // If the knight doesn't see the player
+            if (!this.seesPlayer)
             {
-                this.ChangeDirection();
-                this.moveCounter = 0f;
-            }
+                // Update movement
+                if (this.moveCounter > this.moveRate)
+                {
+                    this.ChangeDirection();
+                    this.moveCounter = 0f;
+                }
 
-            // Which way is the knight facing?
-            switch (this.dirX)
+                // Which way is the knight facing?
+                switch (this.dirX)
+                {
+                    case 1:
+                        this.idle = false;
+                        animator.SetBool("isIdle", this.idle);
+                        this.transform.localScale = Vector3.one;
+                        this.facingLeft = false;
+                        break;
+
+                    case -1:
+                        this.idle = false;
+                        animator.SetBool("isIdle", this.idle);
+                        this.transform.localScale = new Vector3(-1, 1, 1);
+                        this.facingLeft = true;
+                        break;
+
+                    case 0:
+                        this.idle = true;
+                        animator.SetBool("isIdle", this.idle);
+                        break;
+                }
+
+                // Move the knight
+                this.physics.velocity = speed * dirX;
+
+                moveCounter += Time.deltaTime;
+
+                // Look for player
+                FindPlayer();
+            }
+            else // After the knight sees the player
             {
-                case 1:
-                    this.idle = false;
-                    animator.SetBool("isIdle", this.idle);
+
+                // Look for player and move towards them
+                playerX = player.transform.position.x;
+                knightX = this.transform.position.x;
+                if (playerX > knightX)
+                {
                     this.transform.localScale = Vector3.one;
                     this.facingLeft = false;
-                    break;
-
-                case -1:
-                    this.idle = false;
-                    animator.SetBool("isIdle", this.idle);
+                    dirX = 1;
+                }
+                else if (playerX < knightX)
+                {
                     this.transform.localScale = new Vector3(-1, 1, 1);
                     this.facingLeft = true;
-                    break;
+                    dirX = -1;
+                }
+                this.physics.velocity = speed * dirX;
 
-                case 0:
-                    this.idle = true;
-                    animator.SetBool("isIdle", this.idle);
-                    break;
+                if (Time.time > nextAttack)
+                {
+                    nextAttack = Time.time + attackRate;
+                    Attack();
+                }
             }
-
-            // Move the knight
-            this.physics.velocity = speed * dirX;
-
-            moveCounter += Time.deltaTime;
-
-            // Look for player
-            FindPlayer();
         }
-        else // After the knight sees the player
+        else
         {
-
-            // Look for player and move towards them
-            playerX = player.transform.position.x;
-            knightX = this.transform.position.x;
-            if (playerX > knightX)
+            if (Time.time > timeOfDeath + deathDelay)
             {
-                this.transform.localScale = Vector3.one;
-                this.facingLeft = false;
-                dirX = 1;
-            }
-            else if (playerX < knightX)
-            {
-                this.transform.localScale = new Vector3(-1, 1, 1);
-                this.facingLeft = true;
-                dirX = -1;
-            }
-            this.physics.velocity = speed * dirX;
-
-            if (Time.time > nextAttack)
-            {
-                nextAttack = Time.time + attackRate;
-                Attack();
+                Destroy(this.gameObject);
             }
         }
     }//end Update()
@@ -178,13 +201,18 @@ public class Knight : MonoBehaviour
         this.health -= outsideDamage;
         if (this.health < 1)
         {
-            DropLoot();
-            Destroy(this.gameObject);
+            if (!lootDropped) { DropLoot(); }
+            timeOfDeath = Time.time;
+            alive = false;
+            this.gameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
+            this.gameObject.GetComponent<BoxCollider2D>().isTrigger = true;
+            animator.SetTrigger("Dead");
         }
     }
 
     private void DropLoot()
     {
+        lootDropped = true;
         float xPos = this.transform.position.x;
         float yPos = this.transform.position.y;
         float zPos = this.transform.position.z;

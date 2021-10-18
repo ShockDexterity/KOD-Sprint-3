@@ -10,7 +10,7 @@ public class Player : MonoBehaviour
     public float jumpForce;         // Force of player jump
     private bool jumping;           // Are they jumping?
 
-    private int maxHealth = 10;     // max health
+    private int maxHealth = 50;     // max health
     private int health;             // current health
 
     private Animator animator;      // Animator of the player
