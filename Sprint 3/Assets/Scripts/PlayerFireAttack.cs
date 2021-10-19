@@ -84,9 +84,9 @@ public class PlayerFireAttack : MonoBehaviour
         }//end foreach
     }//end Attack
 
-    //// Allows the range to be seen
-    //private void OnDrawGizmosSelected()
-    //{
-    //    Gizmos.DrawWireSphere(attackPoint.position, attackRange);
-    //}//end OnDrawGizmosSelected()
+    // Allows the range to be seen
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
+    }//end OnDrawGizmosSelected()
 }//end PlayerFireAttack

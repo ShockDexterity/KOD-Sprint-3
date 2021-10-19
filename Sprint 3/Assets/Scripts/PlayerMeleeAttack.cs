@@ -63,8 +63,8 @@ public class PlayerMeleeAttack : MonoBehaviour
     }//end Attack()
 
     // Allows the range to be seen
-    // private void OnDrawGizmosSelected()
-    // {
-    //     Gizmos.DrawWireSphere(attackPoint.position, attackRange);
-    // }//end OnDrawGizmosSelected()
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
+    }//end OnDrawGizmosSelected()
 }//end PlayerMeleeAttack
